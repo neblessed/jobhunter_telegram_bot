@@ -1,3 +1,4 @@
 ### Database diagram: 
-![image](https://github.com/neblessed/jobhunter_telegram_bot/assets/110935510/7d8fab4d-f114-412a-83f3-00dae8f1332c)
+![image](https://github.com/neblessed/jobhunter_telegram_bot/assets/110935510/c9b0720b-edd0-4907-90e4-33d3959fa649)
+
 
