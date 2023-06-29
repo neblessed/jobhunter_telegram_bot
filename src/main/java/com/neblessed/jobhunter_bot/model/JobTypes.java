@@ -10,6 +10,6 @@ public class JobTypes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "job_typ")
+    @Column(name = "job_type")
     private String jobTyp;
 }

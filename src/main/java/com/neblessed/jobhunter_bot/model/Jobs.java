@@ -12,6 +12,6 @@ public class Jobs {
     private int id;
     @Column(name = "job_title")
     private String jobTitle;
-    @Column(name = "job_typ")
+    @Column(name = "job_type")
     private int jobTyp;
 }

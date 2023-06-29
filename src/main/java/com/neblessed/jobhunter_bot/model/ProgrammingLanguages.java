@@ -10,6 +10,6 @@ public class ProgrammingLanguages {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "language_name")
+    @Column(name = "language_title")
     private String languageName;
 }

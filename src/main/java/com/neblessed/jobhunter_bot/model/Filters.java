@@ -17,5 +17,5 @@ public class Filters {
     @Column(name = "language_id")
     private int languageId;
     @Column(name = "experience_in_position")
-    private long experienceInPosition; //example: 0.1 - 1 month
+    private double experienceInPosition; //example: 0.1 - 1 month
 }
