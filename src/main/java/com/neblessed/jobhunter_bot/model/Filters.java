@@ -16,6 +16,10 @@ public class Filters {
     private int jobId;
     @Column(name = "language_id")
     private int languageId;
-    @Column(name = "experience_in_position")
-    private double experienceInPosition; //example: 0.1 - 1 month
+    @Column(name = "grade")
+    private double grade;
+    @Column(name = "preffered_salary")
+    private int salary;
+    @Column(name = "currency")
+    private String currency;
 }
