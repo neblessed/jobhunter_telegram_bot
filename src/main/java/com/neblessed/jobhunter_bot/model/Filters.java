@@ -19,7 +19,7 @@ public class Filters {
     @Column(name = "grade")
     private double grade;
     @Column(name = "preffered_salary")
-    private int salary;
+    private int prefferedSalary;
     @Column(name = "currency")
     private String currency;
 }
