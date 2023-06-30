@@ -17,7 +17,7 @@ public class Filters {
     @Column(name = "language_id")
     private int languageId;
     @Column(name = "grade")
-    private double grade;
+    private String grade;
     @Column(name = "preffered_salary")
     private int prefferedSalary;
     @Column(name = "currency")
