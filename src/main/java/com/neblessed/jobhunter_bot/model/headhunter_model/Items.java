@@ -2,13 +2,15 @@ package com.neblessed.jobhunter_bot.model.headhunter_model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 @Data
-public class Headhunter {
-    public class Address{
+@NoArgsConstructor
+public class Items {
+    public static class Address{
         public String city;
         public String street;
         public String building;
@@ -21,18 +23,13 @@ public class Headhunter {
         public String id;
     }
 
-    public class Area{
+    public static class Area{
         public String id;
         public String name;
         public String url;
     }
 
-    public class Department{
-        public String id;
-        public String name;
-    }
-
-    public class Employer{
+    public static class Employer{
         public String id;
         public String name;
         public String url;
@@ -43,26 +40,58 @@ public class Headhunter {
         public boolean trusted;
     }
 
-    public class Employment{
+    public static class Employment{
         public String id;
         public String name;
     }
 
-    public class Experience{
+    public static class Experience{
         public String id;
         public String name;
     }
 
-    public class Item{
+    public static class LogoUrls{
+        @JsonProperty("90")
+        public String _90;
+        @JsonProperty("240")
+        public String _240;
+        public String original;
+    }
+
+    public static class Metro{
+        public String station_name;
+        public String line_name;
+        public String station_id;
+        public String line_id;
+        public double lat;
+        public double lng;
+    }
+
+    public static class MetroStation{
+        public String station_name;
+        public String line_name;
+        public String station_id;
+        public String line_id;
+        public double lat;
+        public double lng;
+    }
+
+    public static class ProfessionalRole{
         public String id;
+        public String name;
+    }
+
+    public static class Root{
+        public int id;
         public boolean premium;
         public String name;
-        public Department department;
+        public int department;
         public boolean has_test;
         public boolean response_letter_required;
         public Area area;
-        public Object salary;
+        public Salary salary;
         public Type type;
+
         public Address address;
         public Object response_url;
         public Object sort_point_distance;
@@ -72,7 +101,6 @@ public class Headhunter {
         public String apply_alternate_url;
         public Object insider_interview;
         public String url;
-        public Object adv_response_url;
         public String alternate_url;
         public ArrayList<Object> relations;
         public Employer employer;
@@ -80,70 +108,32 @@ public class Headhunter {
         public Object contacts;
         public Object schedule;
         public ArrayList<Object> working_days;
-        public ArrayList<WorkingTimeInterval> working_time_intervals;
+        public ArrayList<Object> working_time_intervals;
         public ArrayList<Object> working_time_modes;
         public boolean accept_temporary;
         public ArrayList<ProfessionalRole> professional_roles;
         public boolean accept_incomplete_resumes;
         public Experience experience;
         public Employment employment;
+        public Object adv_response_url;
+        public boolean is_adv_vacancy;
     }
 
-    public class LogoUrls{
-        @JsonProperty("240")
-        public String _240;
-        @JsonProperty("90")
-        public String _90;
-        public String original;
+    public static class Salary{
+        public int from;
+        @JsonProperty("to")
+        public int myto;
+        public String currency;
+        public boolean gross;
     }
 
-    public class Metro{
-        public String station_name;
-        public String line_name;
-        public String station_id;
-        public String line_id;
-        public double lat;
-        public double lng;
-    }
-
-    public class MetroStation{
-        public String station_name;
-        public String line_name;
-        public String station_id;
-        public String line_id;
-        public double lat;
-        public double lng;
-    }
-
-    public class ProfessionalRole{
-        public String id;
-        public String name;
-    }
-
-    public class Root{
-        public ArrayList<Item> items;
-        public int found;
-        public int pages;
-        public int per_page;
-        public int page;
-        public Object clusters;
-        public Object arguments;
-        public String alternate_url;
-    }
-
-    public class Snippet{
+    public static class Snippet{
         public String requirement;
         public String responsibility;
     }
 
-    public class Type{
+    public static class Type{
         public String id;
         public String name;
     }
-
-    public class WorkingTimeInterval{
-        public String id;
-        public String name;
-    }
-
 }
