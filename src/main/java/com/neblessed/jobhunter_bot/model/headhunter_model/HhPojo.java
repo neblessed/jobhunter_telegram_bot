@@ -9,7 +9,42 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-public class Items {
+public class HhPojo {
+    private int id;
+    private boolean premium;
+    private String name;
+    private int department;
+    private boolean has_test;
+    private boolean response_letter_required;
+    private Area area;
+    private Salary salary;
+    private Type type;
+    private Address address;
+    private Object response_url;
+    private Object sort_point_distance;
+    private Date published_at;
+    private Date created_at;
+    private boolean archived;
+    private String apply_alternate_url;
+    private Object insider_interview;
+    private String url;
+    private String alternate_url;
+    private ArrayList<Object> relations;
+    private Employer employer;
+    private Snippet snippet;
+    private Object contacts;
+    private Object schedule;
+    private ArrayList<Object> working_days;
+    private ArrayList<Object> working_time_intervals;
+    private ArrayList<Object> working_time_modes;
+    private boolean accept_temporary;
+    private ArrayList<ProfessionalRole> professional_roles;
+    private boolean accept_incomplete_resumes;
+    private Experience experience;
+    private Employment employment;
+    private Object adv_response_url;
+    public boolean is_adv_vacancy;
+
     public static class Address{
         public String city;
         public String street;
@@ -79,44 +114,6 @@ public class Items {
     public static class ProfessionalRole{
         public String id;
         public String name;
-    }
-
-    public static class Root{
-        public int id;
-        public boolean premium;
-        public String name;
-        public int department;
-        public boolean has_test;
-        public boolean response_letter_required;
-        public Area area;
-        public Salary salary;
-        public Type type;
-
-        public Address address;
-        public Object response_url;
-        public Object sort_point_distance;
-        public Date published_at;
-        public Date created_at;
-        public boolean archived;
-        public String apply_alternate_url;
-        public Object insider_interview;
-        public String url;
-        public String alternate_url;
-        public ArrayList<Object> relations;
-        public Employer employer;
-        public Snippet snippet;
-        public Object contacts;
-        public Object schedule;
-        public ArrayList<Object> working_days;
-        public ArrayList<Object> working_time_intervals;
-        public ArrayList<Object> working_time_modes;
-        public boolean accept_temporary;
-        public ArrayList<ProfessionalRole> professional_roles;
-        public boolean accept_incomplete_resumes;
-        public Experience experience;
-        public Employment employment;
-        public Object adv_response_url;
-        public boolean is_adv_vacancy;
     }
 
     public static class Salary{

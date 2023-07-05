@@ -1,6 +1,6 @@
 package com.neblessed.jobhunter_bot.service;
 
-import com.neblessed.jobhunter_bot.model.headhunter_model.Items;
+import com.neblessed.jobhunter_bot.model.headhunter_model.HhPojo;
 import com.neblessed.jobhunter_bot.repository.FiltersRepository;
 import com.neblessed.jobhunter_bot.repository.JobsRepository;
 import com.neblessed.jobhunter_bot.repository.UsersRepository;
@@ -25,7 +25,7 @@ public class HeadhunterApiServiceImpl implements HeadhunterApiService {
     JobsRepository jobsRepository;
 
     @Override
-    public List<Items> getAllVacanciesPerDay(int chatId) {
+    public List<HhPojo> getAllVacanciesPerDay(int chatId) {
         //text params
         int filterId = usersRepository.findAll()
                 .stream()
@@ -41,11 +41,12 @@ public class HeadhunterApiServiceImpl implements HeadhunterApiService {
         //salary params
         int salary = filtersRepository.findById(filterId).get().getPrefferedSalary();
         String currency = filtersRepository.findById(filterId).get().getCurrency();
-        List<Items> hunter = new ArrayList<>();
+
         //period params
+        //TODO add period parameter
 
         //TEST DATA FROM POJO
-        List<Items.Root> hh = given()
+        List<HhPojo> hh = given()
                 .contentType(ContentType.JSON)
                 .queryParam("text", jobName + " " + grade)
                 .queryParam("only_with_salary", true)
@@ -53,17 +54,17 @@ public class HeadhunterApiServiceImpl implements HeadhunterApiService {
                 .get("https://api.hh.ru/vacancies")
                 .then()
                 .extract().body().jsonPath()
-                .getList("items", Items.Root.class);
+                .getList("items", HhPojo.class);
 
-        System.out.println("Ссылка на вакансию: " + hh.get(1).alternate_url);
-        System.out.println("Компания: " + hh.get(1).employer.name);
-        System.out.println("Название вакансии: " + hh.get(1).name);
-        System.out.println("Локация: " + hh.get(1).area.name);
-        System.out.println("Тип работы: " + hh.get(1).employment.name);
-        System.out.println("Требуемый опыт: " + hh.get(1).experience.name);
-        System.out.println("Зарплата: от " + hh.get(1).salary.from + " до " + hh.get(1).salary.myto + " " + hh.get(1).salary.currency);
+        System.out.println("Ссылка на вакансию: " + hh.get(1).getAlternate_url());
+        System.out.println("Компания: " + hh.get(1).getEmployer().name);
+        System.out.println("Название вакансии: " + hh.get(1).getName());
+        System.out.println("Локация: " + hh.get(1).getArea().name);
+        System.out.println("Тип работы: " + hh.get(1).getEmployment().name);
+        System.out.println("Требуемый опыт: " + hh.get(1).getExperience().name);
+        System.out.println("Зарплата: от " + hh.get(1).getSalary().from + " до " + hh.get(1).getSalary().myto + " " + hh.get(1).getSalary().currency);
 
-        return hunter;
+        return hh;
 
     }
 }
