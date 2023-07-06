@@ -14,12 +14,14 @@ public class Filters {
     private String prefferedLocation;
     @Column(name = "job_id")
     private int jobId;
+    @Column(name = "job_typ")
+    private int jobTyp;
     @Column(name = "language_id")
     private int languageId;
-    @Column(name = "grade")
-    private String grade;
+    @Column(name = "grade_id")
+    private int gradeId;
     @Column(name = "preffered_salary")
     private int prefferedSalary;
-    @Column(name = "currency")
-    private String currency;
+    @Column(name = "currency_id")
+    private int currencyId;
 }

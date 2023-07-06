@@ -1,8 +1,6 @@
 package com.neblessed.jobhunter_bot.helpers;
 
-import com.neblessed.jobhunter_bot.repository.FiltersRepository;
-import com.neblessed.jobhunter_bot.repository.JobsRepository;
-import com.neblessed.jobhunter_bot.repository.UsersRepository;
+import com.neblessed.jobhunter_bot.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +15,12 @@ public class RequestData {
     @Autowired
     JobsRepository jobsRepository;
 
+    @Autowired
+    GradesRepository gradesRepository;
+
+    @Autowired
+    CurrencyRepository currencyRepository;
+
 
     public int getFilterId(int chatId) {
         return usersRepository
@@ -30,8 +34,8 @@ public class RequestData {
 
     public int getJobId(int chatId) {
         return filtersRepository
-                .findById(getFilterId(chatId)).
-                get()
+                .findById(getFilterId(chatId))
+                .get()
                 .getJobId();
     }
 
@@ -43,8 +47,13 @@ public class RequestData {
     }
 
     public String getGrade(int chatId) {
-        return filtersRepository
+        int gradeId = filtersRepository
                 .findById(getFilterId(chatId))
+                .get()
+                .getGradeId();
+
+        return gradesRepository
+                .findById(gradeId)
                 .get()
                 .getGrade();
     }
@@ -57,13 +66,18 @@ public class RequestData {
     }
 
     public String getCurrency(int chatId) {
-        return filtersRepository
+        int currencyId = filtersRepository
                 .findById(getFilterId(chatId))
                 .get()
-                .getCurrency();
+                .getCurrencyId();
+
+        return currencyRepository
+                .findById(currencyId)
+                .get()
+                .getCurrecy();
     }
 
-    public String getPrefferedLocation(int chatId){
+    public String getPrefferedLocation(int chatId) {
         return filtersRepository
                 .findById(getFilterId(chatId))
                 .get()

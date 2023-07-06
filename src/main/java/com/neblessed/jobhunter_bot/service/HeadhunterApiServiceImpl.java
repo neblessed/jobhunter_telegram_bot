@@ -8,6 +8,7 @@ import com.neblessed.jobhunter_bot.repository.UsersRepository;
 import io.restassured.http.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,11 +27,11 @@ public class HeadhunterApiServiceImpl implements HeadhunterApiService {
         String grade = data.getGrade(chatId);
         int salary = data.getSalary(chatId);
         String currency = data.getCurrency(chatId);
+
         String prefferedLocation = data.getPrefferedLocation(chatId);
 
         //QueryParams
         String jobWithDrageQuery = jobName + " " + grade;
-        //period params
         //TODO add period parameter
 
         //TEST DATA FROM POJO

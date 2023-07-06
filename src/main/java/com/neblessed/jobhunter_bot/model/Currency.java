@@ -4,12 +4,12 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "jobs")
+@Table(name = "currency")
 @Data
-public class Jobs {
+public class Currency {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "job_title")
-    private String jobTitle;
+    @Column(name = "currency")
+    private String currecy;
 }
