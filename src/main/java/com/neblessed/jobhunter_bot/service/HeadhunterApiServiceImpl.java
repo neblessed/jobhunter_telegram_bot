@@ -15,16 +15,6 @@ import static io.restassured.RestAssured.given;
 
 @Service
 public class HeadhunterApiServiceImpl implements HeadhunterApiService {
-
-    @Autowired
-    FiltersRepository filtersRepository;
-
-    @Autowired
-    UsersRepository usersRepository;
-
-    @Autowired
-    JobsRepository jobsRepository;
-
     @Autowired
     RequestData data;
 
