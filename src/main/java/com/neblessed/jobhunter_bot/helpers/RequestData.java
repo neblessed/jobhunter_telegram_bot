@@ -4,7 +4,9 @@ import com.neblessed.jobhunter_bot.repository.FiltersRepository;
 import com.neblessed.jobhunter_bot.repository.JobsRepository;
 import com.neblessed.jobhunter_bot.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RequestData {
     @Autowired
     UsersRepository usersRepository;
@@ -17,7 +19,8 @@ public class RequestData {
 
 
     public int getFilterId(int chatId) {
-        return usersRepository.findAll()
+        return usersRepository
+                .findAll()
                 .stream()
                 .filter(x -> x.getTgUserId() == chatId)
                 .findFirst()
@@ -26,32 +29,44 @@ public class RequestData {
     }
 
     public int getJobId(int chatId) {
-        return filtersRepository.findById(getFilterId(chatId)).
+        return filtersRepository
+                .findById(getFilterId(chatId)).
                 get()
                 .getJobId();
     }
 
     public String getJobTitle(int chatId) {
-        return jobsRepository.findById(getJobId(chatId))
+        return jobsRepository
+                .findById(getJobId(chatId))
                 .get()
                 .getJobTitle();
     }
 
     public String getGrade(int chatId) {
-        return filtersRepository.findById(getFilterId(chatId))
+        return filtersRepository
+                .findById(getFilterId(chatId))
                 .get()
                 .getGrade();
     }
 
     public int getSalary(int chatId) {
-        return filtersRepository.findById(getFilterId(chatId))
+        return filtersRepository
+                .findById(getFilterId(chatId))
                 .get()
                 .getPrefferedSalary();
     }
 
     public String getCurrency(int chatId) {
-        return filtersRepository.findById(getFilterId(chatId))
+        return filtersRepository
+                .findById(getFilterId(chatId))
                 .get()
                 .getCurrency();
+    }
+
+    public String getPrefferedLocation(int chatId){
+        return filtersRepository
+                .findById(getFilterId(chatId))
+                .get()
+                .getPrefferedLocation();
     }
 }
