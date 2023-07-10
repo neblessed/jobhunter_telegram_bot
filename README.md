@@ -3,6 +3,7 @@
 
 
 ### Keyboards dependency (beta): 
-![image](https://github.com/neblessed/jobhunter_telegram_bot/assets/110935510/cfbf574a-9a43-42c6-8643-81cc30b64ade)
+![image](https://github.com/neblessed/jobhunter_telegram_bot/assets/110935510/6e973845-da85-4b16-b9d1-5cf2c17a7b7f)
+
 
 
