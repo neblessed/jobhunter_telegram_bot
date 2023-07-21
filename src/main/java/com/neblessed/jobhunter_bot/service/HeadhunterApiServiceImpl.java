@@ -1,5 +1,6 @@
 package com.neblessed.jobhunter_bot.service;
 
+import com.neblessed.jobhunter_bot.configuration.BotConfiguration;
 import com.neblessed.jobhunter_bot.helpers.RequestData;
 import com.neblessed.jobhunter_bot.model.headhunter_model.HhPojo;
 import com.neblessed.jobhunter_bot.repository.FiltersRepository;
@@ -19,6 +20,9 @@ public class HeadhunterApiServiceImpl implements HeadhunterApiService {
     @Autowired
     RequestData data;
 
+    @Autowired
+    BotConfiguration configuration;
+
     @Override
     public List<HhPojo> getAllVacanciesPerDay(int chatId) {
         int filterId = data.getFilterId(chatId);
@@ -27,18 +31,20 @@ public class HeadhunterApiServiceImpl implements HeadhunterApiService {
         String grade = data.getGrade(chatId);
         int salary = data.getSalary(chatId);
         String currency = data.getCurrency(chatId);
-
         String prefferedLocation = data.getPrefferedLocation(chatId);
-
-        //QueryParams
+        String experience = "between1And3"; //noExperience, between1And3, between3And6, moreThan6
+        String shedule = "remote"; //remote, flexible(гибкий график), fullDay
+        int searchInDays = 10; //Поиск за последнее количество дней
+        int area = 94; //Турция. Использовать id локации согласно api/areas
         String jobWithDrageQuery = jobName + " " + grade;
-        //TODO add period parameter
+
 
         //TEST DATA FROM POJO
         List<HhPojo> hh = given()
                 .contentType(ContentType.JSON)
                 .queryParam("text", jobWithDrageQuery)
                 .queryParam("only_with_salary", true)
+                .queryParam("period", searchInDays)
                 .when()
                 .get("https://api.hh.ru/vacancies")
                 .then()
