@@ -2,7 +2,6 @@ package com.neblessed.jobhunter_bot.service.implementation;
 
 import com.neblessed.jobhunter_bot.helpers.RequestData;
 import com.neblessed.jobhunter_bot.model.Filters;
-import com.neblessed.jobhunter_bot.repository.FiltersRepository;
 import com.neblessed.jobhunter_bot.repository.UsersRepository;
 import com.neblessed.jobhunter_bot.service.FiltersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,6 @@ import java.util.List;
 
 @Service
 public class FiltersServiceImpl implements FiltersService {
-    @Autowired
-    FiltersRepository filtersRepository;
     @Autowired
     RequestData requestData;
     @Autowired
@@ -27,7 +24,7 @@ public class FiltersServiceImpl implements FiltersService {
                     + "Грейд: " + requestData.getGrade(chatId) + "\n"
                     + "Предпочитаемая локация: " + requestData.getPrefferedLocation(chatId) + "\n"
                     + "Зарплата: " + requestData.getSalary(chatId);
-        } else return "У Вас ещё не создано ни одного фильтра.\n" + "Нажмите на кнопку: [Создать фильтр 📟]";
+        } else return "У Вас ещё не создано ни одного фильтра.\n" + "Нажмите на [Создать фильтр 📟]";
     }
 
     @Override

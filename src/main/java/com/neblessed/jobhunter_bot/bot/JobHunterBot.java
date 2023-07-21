@@ -13,9 +13,6 @@ public class JobHunterBot extends TelegramLongPollingBot {
     @Autowired
     TelegramMessages messages;
 
-    @Autowired
-
-
     public JobHunterBot(@Value("${bot.token}") String token) {
         super(token);
     }
