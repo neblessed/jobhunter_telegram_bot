@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-@EntityScan
+@Entity
 @Data
 @Table(name = "users")
 public class Users {
@@ -13,8 +13,6 @@ public class Users {
     private int id;
     @Column(name = "telegram_user_id")
     private int tgUserId;
-    @Column(name = "username")
-    private String username;
     @Column(name = "current_location")
     private String currentLocation;
     @Column(name = "filter_id")
