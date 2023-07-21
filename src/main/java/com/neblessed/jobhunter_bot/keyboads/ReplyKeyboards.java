@@ -42,7 +42,6 @@ public class ReplyKeyboards {
 
     public ReplyKeyboardMarkup searchMenu() {
         String disableSearchMode = "Пауза ⏸";
-        String myFilters = "Мои фильтры ⚡";
 
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
 
@@ -50,12 +49,7 @@ public class ReplyKeyboards {
 
         KeyboardRow rowOne = new KeyboardRow();
         rowOne.add(disableSearchMode);
-
-        KeyboardRow rowTwo = new KeyboardRow();
-        rowTwo.add(myFilters);
-
         keyboard.add(rowOne);
-        keyboard.add(rowTwo);
 
         keyboardMarkup.setResizeKeyboard(true);
         keyboardMarkup.setKeyboard(keyboard);
