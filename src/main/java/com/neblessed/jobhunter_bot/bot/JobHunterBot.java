@@ -42,7 +42,8 @@ public class JobHunterBot extends TelegramLongPollingBot {
                 case "Включить приём вакансий ▶" -> execute(messages.searchModeEnabled(chatId));
                 case "Пауза ⏸" -> execute(messages.searchModeDisabled(chatId));
                 case "Мой фильтр ⚡" -> execute(messages.userFilter(chatId));
-                case "Создать фильтр 📟" -> execute(filterMessages.addYourJob(chatId));
+                case "Создать фильтр 📟" -> execute(filterMessages.addYourFilter(chatId));
+                case "Сбросить фильтры 🗑" -> execute(filterMessages.removeFilter(chatId));
             }
         } else if (update.hasCallbackQuery()) {
             long chatId = update.getCallbackQuery().getMessage().getChatId();
@@ -106,10 +107,16 @@ public class JobHunterBot extends TelegramLongPollingBot {
                     filter.setJobTyp(3);
                     execute(filterMessages.prefferedLocation(chatId));
                 }
-                case "typeNoMatter" -> execute(filterMessages.prefferedLocation(chatId));
+                case "typeNoMatter" -> {
+                    filter.setJobTyp(100);
+                    execute(filterMessages.prefferedLocation(chatId));
+                }
 
 
-                case "locationNoMatter" -> execute(filterMessages.prefferedSalary(chatId));
+                case "locationNoMatter" -> {
+                    filter.setPrefferedLocation("");
+                    execute(filterMessages.programmingLanguage(chatId));
+                }
                 case "locationRussia" -> {
                     filter.setPrefferedLocation("Россия");
                     execute(filterMessages.programmingLanguage(chatId));
@@ -142,6 +149,8 @@ public class JobHunterBot extends TelegramLongPollingBot {
                     filter.setPrefferedLocation("США");
                     execute(filterMessages.programmingLanguage(chatId));
                 }
+
+
                 case "java" -> {
                     filter.setLanguageId(1);
                     execute(filterMessages.prefferedSalary(chatId));
@@ -166,7 +175,12 @@ public class JobHunterBot extends TelegramLongPollingBot {
                     filter.setLanguageId(6);
                     execute(filterMessages.prefferedSalary(chatId));
                 }
-                case "programmingLanguageNoMatter" -> execute(filterMessages.prefferedSalary(chatId));
+                case "programmingLanguageNoMatter" -> {
+                    filter.setLanguageId(100);
+                    execute(filterMessages.prefferedSalary(chatId));
+                }
+
+
                 case "50-80k" -> {
                     filter.setPrefferedSalary(60000);
                     execute(filterMessages.filterCreated(chatId));
@@ -180,7 +194,6 @@ public class JobHunterBot extends TelegramLongPollingBot {
                 case "120-150k" -> {
                     filter.setPrefferedSalary(12000);
                     execute(filterMessages.filterCreated(chatId));
-                    System.out.println(filter);
                     filtersService.saveFilter(filter, (int) chatId);
                 }
             }
