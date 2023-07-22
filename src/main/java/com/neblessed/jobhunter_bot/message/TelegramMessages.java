@@ -1,6 +1,6 @@
-package com.neblessed.jobhunter_bot.messages;
+package com.neblessed.jobhunter_bot.message;
 
-import com.neblessed.jobhunter_bot.keyboads.ReplyKeyboards;
+import com.neblessed.jobhunter_bot.keyboad.ReplyKeyboards;
 import com.neblessed.jobhunter_bot.service.implementation.FiltersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

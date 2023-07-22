@@ -1,4 +1,4 @@
-package com.neblessed.jobhunter_bot.keyboads;
+package com.neblessed.jobhunter_bot.keyboad;
 
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
