@@ -30,4 +30,14 @@ public class FilterParamsMessages {
                 .build();
         return message;
     }
+
+    public SendMessage prefferedLocation(long chatId) {
+        SendMessage message = SendMessage
+                .builder()
+                .chatId(chatId)
+                .text("Предпочитаемая страна компании: ")
+                .replyMarkup(inlineKeyboards.prefferedLocation())
+                .build();
+        return message;
+    }
 }
