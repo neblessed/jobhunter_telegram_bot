@@ -1,6 +1,7 @@
 package com.neblessed.jobhunter_bot.message;
 
 import com.neblessed.jobhunter_bot.keyboad.ReplyKeyboards;
+import com.neblessed.jobhunter_bot.repository.FiltersRepository;
 import com.neblessed.jobhunter_bot.service.implementation.FiltersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,8 @@ public class TelegramMessages {
     ReplyKeyboards replyKeyboards;
     @Autowired
     FiltersServiceImpl filtersService;
+    @Autowired
+    FiltersRepository filtersRepository;
 
     public SendMessage firstInfoMessage(long chatId) {
         SendMessage message = SendMessage
@@ -25,22 +28,31 @@ public class TelegramMessages {
     }
 
     public SendMessage searchModeEnabled(long chatId) {
-        SendMessage message = SendMessage
-                .builder()
-                .chatId(chatId)
-                .text("Режим приема вакансий включён ✅\n"
-                        + "Теперь вы будете получать предложения о работе согласно созданному Вами фильтру.")
-                .replyMarkup(replyKeyboards.searchMenu())
-                .build();
-
-        return message;
+        if (filtersRepository.findAll().stream().anyMatch(x -> x.getTelegram_id() == chatId)) {
+            SendMessage message = SendMessage
+                    .builder()
+                    .chatId(chatId)
+                    .text("Режим приема вакансий включён ✅\n"
+                            + "\nТеперь вы будете получать предложения о работе согласно созданному фильтру.")
+                    .replyMarkup(replyKeyboards.searchMenu())
+                    .build();
+            return message;
+        } else {
+            SendMessage message = SendMessage
+                    .builder()
+                    .chatId(chatId)
+                    .text("Отсутствует фильтр для поиска ❌\n"
+                    +"\nДля начала создайте его")
+                    .build();
+            return message;
+        }
     }
 
     public SendMessage searchModeDisabled(long chatId) {
         SendMessage message = SendMessage
                 .builder()
                 .chatId(chatId)
-                .text("Режим приема вакансий приостановлен ⏸")
+                .text("Режим приема вакансий остановлен ⏸")
                 .replyMarkup(replyKeyboards.mainMenu())
                 .build();
 

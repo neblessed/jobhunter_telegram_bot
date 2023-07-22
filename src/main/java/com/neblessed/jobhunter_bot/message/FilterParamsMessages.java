@@ -1,7 +1,8 @@
 package com.neblessed.jobhunter_bot.message;
 
 import com.neblessed.jobhunter_bot.keyboad.InlineKeyboards;
-import com.neblessed.jobhunter_bot.keyboad.ReplyKeyboards;
+import com.neblessed.jobhunter_bot.repository.FiltersRepository;
+import com.neblessed.jobhunter_bot.service.implementation.FiltersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -11,15 +12,30 @@ public class FilterParamsMessages {
     @Autowired
     InlineKeyboards inlineKeyboards;
 
+    @Autowired
+    FiltersRepository filtersRepository;
 
-    public SendMessage addYourJob(long chatId) {
-        SendMessage message = SendMessage
-                .builder()
-                .chatId(chatId)
-                .text("Выберите Вашу позицию: ")
-                .replyMarkup(inlineKeyboards.jobPosition())
-                .build();
-        return message;
+    @Autowired
+    FiltersServiceImpl filtersService;
+
+
+    public SendMessage addYourFilter(long chatId) {
+        if (filtersRepository.findAll().stream().anyMatch(x -> x.getTelegram_id() == chatId)) {
+            SendMessage message = SendMessage
+                    .builder()
+                    .chatId(chatId)
+                    .text("У Вас уже имеется созданный фильтр ❌")
+                    .build();
+            return message;
+        } else {
+            SendMessage message = SendMessage
+                    .builder()
+                    .chatId(chatId)
+                    .text("Выберите Вашу позицию: ")
+                    .replyMarkup(inlineKeyboards.jobPosition())
+                    .build();
+            return message;
+        }
     }
 
     public SendMessage addYourGrade(long chatId) {
@@ -79,5 +95,24 @@ public class FilterParamsMessages {
                 .text("Ваш фильтр успешно создан 👌🏼")
                 .build();
         return message;
+    }
+
+    public SendMessage removeFilter(long chatId) {
+        if (filtersRepository.findAll().stream().anyMatch(x -> x.getTelegram_id() == chatId)) {
+            filtersService.deleteFilter((int) chatId);
+            SendMessage message = SendMessage
+                    .builder()
+                    .chatId(chatId)
+                    .text("Фильтр успешно удалён ✅\nТеперь вы можете создать новый.")
+                    .build();
+            return message;
+        } else {
+            SendMessage message = SendMessage
+                    .builder()
+                    .chatId(chatId)
+                    .text("Нечего удалять. Фильтр не был ранее создан ❌")
+                    .build();
+            return message;
+        }
     }
 }

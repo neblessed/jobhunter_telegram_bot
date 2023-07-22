@@ -18,10 +18,10 @@ public class FiltersServiceImpl implements FiltersService {
     @Override
     public String myFilter(int chatId) {
         if (filtersRepository.findAll().stream().anyMatch(x -> x.getTelegram_id() == chatId)) {
-            return "Позиция: " + requestData.getJobTitle(chatId) + "\n"
-                    + "Грейд: " + requestData.getGrade(chatId) + "\n"
-                    + "Предпочитаемая локация: " + requestData.getPrefferedLocation(chatId) + "\n"
-                    + "Зарплата: " + requestData.getSalary(chatId);
+            return "🔻 Позиция: " + requestData.getJobTitle(chatId) + "\n"
+                    + "🔻 Грейд: " + requestData.getGrade(chatId) + "\n"
+                    + "🔻 Предпочитаемая локация: " + requestData.getPrefferedLocation(chatId) + "\n"
+                    + "🔻 Зарплата: " + requestData.getSalary(chatId) + " RUB";
         } else return "Вы ещё не создали фильтр.\n" + "Нажмите на [Создать фильтр 📟]";
     }
 
@@ -30,5 +30,11 @@ public class FiltersServiceImpl implements FiltersService {
         if (filtersRepository.findAll().stream().allMatch(x -> x.getTelegram_id() != chatId)) {
             filtersRepository.save(filter);
         } else throw new Exception("Что-то пошло не так при создании фильтра");
+    }
+
+    public void deleteFilter(int chatId){
+        int id = requestData.getFilterId(chatId);
+
+        filtersRepository.deleteById(id);
     }
 }
