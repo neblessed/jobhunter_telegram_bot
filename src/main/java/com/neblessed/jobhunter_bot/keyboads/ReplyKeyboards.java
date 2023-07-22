@@ -13,7 +13,7 @@ public class ReplyKeyboards {
     public ReplyKeyboardMarkup mainMenu() {
         String enableSearchMode = "Включить приём вакансий ▶";
         String createFilter = "Создать фильтр 📟";
-        String myFilters = "Мои фильтры ⚡";
+        String myFilters = "Мой фильтр ⚡";
         String clearFilters = "Сбросить фильтры 🗑";
 
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();

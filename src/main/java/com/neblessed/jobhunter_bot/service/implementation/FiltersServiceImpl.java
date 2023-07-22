@@ -24,7 +24,7 @@ public class FiltersServiceImpl implements FiltersService {
                     + "Грейд: " + requestData.getGrade(chatId) + "\n"
                     + "Предпочитаемая локация: " + requestData.getPrefferedLocation(chatId) + "\n"
                     + "Зарплата: " + requestData.getSalary(chatId);
-        } else return "У Вас ещё не создано ни одного фильтра.\n" + "Нажмите на [Создать фильтр 📟]";
+        } else return "Вы ещё не создали фильтр.\n" + "Нажмите на [Создать фильтр 📟]";
     }
 
     @Override

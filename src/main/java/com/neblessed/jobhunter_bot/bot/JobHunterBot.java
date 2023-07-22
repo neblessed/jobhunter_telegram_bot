@@ -29,7 +29,7 @@ public class JobHunterBot extends TelegramLongPollingBot {
                 case "/start" -> execute(messages.firstInfoMessage(chatId));
                 case "Включить приём вакансий ▶" -> execute(messages.searchModeEnabled(chatId));
                 case "Пауза ⏸" -> execute(messages.searchModeDisabled(chatId));
-                case "Мои фильтры ⚡" -> execute(messages.userFilter(chatId));
+                case "Мой фильтр ⚡" -> execute(messages.userFilter(chatId));
             }
         }
     }

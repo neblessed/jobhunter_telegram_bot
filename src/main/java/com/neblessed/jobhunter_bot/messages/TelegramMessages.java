@@ -28,7 +28,8 @@ public class TelegramMessages {
         SendMessage message = SendMessage
                 .builder()
                 .chatId(chatId)
-                .text("Режим приема вакансий включён ✔")
+                .text("Режим приема вакансий включён ✅\n"
+                        + "Теперь вы будете получать предложения о работе согласно созданному Вами фильтру.")
                 .replyMarkup(replyKeyboards.searchMenu())
                 .build();
 
