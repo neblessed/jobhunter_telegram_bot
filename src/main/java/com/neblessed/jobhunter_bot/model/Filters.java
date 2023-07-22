@@ -24,4 +24,6 @@ public class Filters {
     private int prefferedSalary;
     @Column(name = "currency_id")
     private int currencyId;
+    @Column(name = "telegram_id")
+    private int telegram_id;
 }

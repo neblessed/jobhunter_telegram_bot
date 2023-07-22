@@ -1,16 +1,12 @@
-package com.neblessed.jobhunter_bot.service;
+package com.neblessed.jobhunter_bot.service.implementation;
 
-import com.neblessed.jobhunter_bot.configuration.BotConfiguration;
 import com.neblessed.jobhunter_bot.helpers.RequestData;
 import com.neblessed.jobhunter_bot.model.headhunter_model.HhPojo;
-import com.neblessed.jobhunter_bot.repository.FiltersRepository;
-import com.neblessed.jobhunter_bot.repository.JobsRepository;
-import com.neblessed.jobhunter_bot.repository.UsersRepository;
+import com.neblessed.jobhunter_bot.service.HeadhunterApiService;
 import io.restassured.http.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
@@ -19,9 +15,6 @@ import static io.restassured.RestAssured.given;
 public class HeadhunterApiServiceImpl implements HeadhunterApiService {
     @Autowired
     RequestData data;
-
-    @Autowired
-    BotConfiguration configuration;
 
     @Override
     public List<HhPojo> getAllVacanciesPerDay(int chatId) {

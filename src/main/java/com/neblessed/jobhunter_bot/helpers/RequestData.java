@@ -7,9 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class RequestData {
     @Autowired
-    UsersRepository usersRepository;
-
-    @Autowired
     FiltersRepository filtersRepository;
 
     @Autowired
@@ -23,13 +20,13 @@ public class RequestData {
 
 
     public int getFilterId(int chatId) {
-        return usersRepository
+        return filtersRepository
                 .findAll()
                 .stream()
-                .filter(x -> x.getTgUserId() == chatId)
+                .filter(x -> x.getTelegram_id() == chatId)
                 .findFirst()
                 .get()
-                .getFilterId();
+                .getId();
     }
 
     public int getJobId(int chatId) {

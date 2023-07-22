@@ -1,4 +1,4 @@
-package com.neblessed.jobhunter_bot.keyboads;
+package com.neblessed.jobhunter_bot.keyboad;
 
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
@@ -13,8 +13,8 @@ public class ReplyKeyboards {
     public ReplyKeyboardMarkup mainMenu() {
         String enableSearchMode = "Включить приём вакансий ▶";
         String createFilter = "Создать фильтр 📟";
-        String myFilters = "Мои фильтры ⚡";
-        String clearFilters = "Сбросить фильтры 🗑";
+        String myFilters = "Мой фильтр ⚡";
+        String clearFilters = "Сбросить фильтр 🗑";
 
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
 
@@ -42,7 +42,6 @@ public class ReplyKeyboards {
 
     public ReplyKeyboardMarkup searchMenu() {
         String disableSearchMode = "Пауза ⏸";
-        String myFilters = "Мои фильтры ⚡";
 
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
 
@@ -50,12 +49,7 @@ public class ReplyKeyboards {
 
         KeyboardRow rowOne = new KeyboardRow();
         rowOne.add(disableSearchMode);
-
-        KeyboardRow rowTwo = new KeyboardRow();
-        rowTwo.add(myFilters);
-
         keyboard.add(rowOne);
-        keyboard.add(rowTwo);
 
         keyboardMarkup.setResizeKeyboard(true);
         keyboardMarkup.setKeyboard(keyboard);
