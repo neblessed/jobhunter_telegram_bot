@@ -144,4 +144,114 @@ public class InlineKeyboards {
         inlineKeyboardMarkup.setKeyboard(rowsInLine);
         return inlineKeyboardMarkup;
     }
+
+    public InlineKeyboardMarkup prefferedJobType() {
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rowsInLine = new ArrayList<>();
+        List<InlineKeyboardButton> rowOne;
+
+        InlineKeyboardButton jobTypeNoMatter = InlineKeyboardButton.builder()
+                .text("Не важно")
+                .callbackData("typeNoMatter")
+                .build();
+
+        InlineKeyboardButton remote = InlineKeyboardButton.builder()
+                .text("Удаленно")
+                .callbackData("remote")
+                .build();
+
+        InlineKeyboardButton office = InlineKeyboardButton.builder()
+                .text("Офис")
+                .callbackData("office")
+                .build();
+
+        InlineKeyboardButton hybrid = InlineKeyboardButton.builder()
+                .text("Гибрид")
+                .callbackData("hybrid")
+                .build();
+
+        rowOne = List.of(jobTypeNoMatter, remote, office, hybrid);
+        rowsInLine.add(rowOne);
+        inlineKeyboardMarkup.setKeyboard(rowsInLine);
+        return inlineKeyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup prefferedSalary() {
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rowsInLine = new ArrayList<>();
+        List<InlineKeyboardButton> rowOne;
+
+        InlineKeyboardButton k50plus = InlineKeyboardButton.builder()
+                .text("50-80k RUB")
+                .callbackData("50-80k")
+                .build();
+
+        InlineKeyboardButton k90plus = InlineKeyboardButton.builder()
+                .text("90-120k RUB")
+                .callbackData("90-120k")
+                .build();
+
+        InlineKeyboardButton k120plus = InlineKeyboardButton.builder()
+                .text("120-150k RUB")
+                .callbackData("120-150k")
+                .build();
+
+        rowOne = List.of(k50plus, k90plus, k120plus);
+        rowsInLine.add(rowOne);
+        inlineKeyboardMarkup.setKeyboard(rowsInLine);
+        return inlineKeyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup programmingLanguage() {
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rowsInLine = new ArrayList<>();
+        List<InlineKeyboardButton> rowOne;
+        List<InlineKeyboardButton> rowTwo;
+        List<InlineKeyboardButton> rowThree;
+        List<InlineKeyboardButton> rowFour;
+
+        InlineKeyboardButton java = InlineKeyboardButton.builder()
+                .text("Java")
+                .callbackData("java")
+                .build();
+
+        InlineKeyboardButton python = InlineKeyboardButton.builder()
+                .text("Python")
+                .callbackData("python")
+                .build();
+
+        InlineKeyboardButton kotlin = InlineKeyboardButton.builder()
+                .text("Kotlin")
+                .callbackData("kotlin")
+                .build();
+
+        InlineKeyboardButton javaScript = InlineKeyboardButton.builder()
+                .text("JavaScript")
+                .callbackData("javaScript")
+                .build();
+
+        InlineKeyboardButton golang = InlineKeyboardButton.builder()
+                .text("Golang")
+                .callbackData("golang")
+                .build();
+
+        InlineKeyboardButton c = InlineKeyboardButton.builder()
+                .text("C")
+                .callbackData("c")
+                .build();
+
+        InlineKeyboardButton programmingLanguageNoMatter = InlineKeyboardButton.builder()
+                .text("Пропустить")
+                .callbackData("programmingLanguageNoMatter")
+                .build();
+
+        rowOne = List.of(java, python);
+        rowTwo = List.of(javaScript, kotlin);
+        rowThree = List.of(golang, c);
+        rowFour = List.of(programmingLanguageNoMatter);
+
+        rowsInLine = List.of(rowOne, rowTwo, rowThree, rowFour);
+        inlineKeyboardMarkup.setKeyboard(rowsInLine);
+        return inlineKeyboardMarkup;
+    }
 }

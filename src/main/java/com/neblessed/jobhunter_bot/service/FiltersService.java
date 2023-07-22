@@ -8,5 +8,5 @@ public interface FiltersService {
 
     String myFilter(int chatId);
 
-    Filters saveFilter(List<String> parameters);
+    void saveFilter(Filters filter, int chatId) throws Exception;
 }
