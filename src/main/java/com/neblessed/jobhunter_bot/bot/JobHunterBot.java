@@ -43,7 +43,7 @@ public class JobHunterBot extends TelegramLongPollingBot {
                 case "Пауза ⏸" -> execute(messages.searchModeDisabled(chatId));
                 case "Мой фильтр ⚡" -> execute(messages.userFilter(chatId));
                 case "Создать фильтр 📟" -> execute(filterMessages.addYourFilter(chatId));
-                case "Сбросить фильтры 🗑" -> execute(filterMessages.removeFilter(chatId));
+                case "Сбросить фильтр 🗑" -> execute(filterMessages.removeFilter(chatId));
             }
         } else if (update.hasCallbackQuery()) {
             long chatId = update.getCallbackQuery().getMessage().getChatId();

@@ -24,7 +24,7 @@ public class FilterParamsMessages {
             SendMessage message = SendMessage
                     .builder()
                     .chatId(chatId)
-                    .text("У Вас уже имеется созданный фильтр ❌")
+                    .text("У Вас уже имеется фильтр ❌")
                     .build();
             return message;
         } else {
@@ -103,14 +103,14 @@ public class FilterParamsMessages {
             SendMessage message = SendMessage
                     .builder()
                     .chatId(chatId)
-                    .text("Фильтр успешно удалён ✅\nТеперь вы можете создать новый.")
+                    .text("Фильтр успешно удалён ✅\nТеперь вы можете создать новый")
                     .build();
             return message;
         } else {
             SendMessage message = SendMessage
                     .builder()
                     .chatId(chatId)
-                    .text("Нечего удалять. Фильтр не был ранее создан ❌")
+                    .text("Удалять нечего ❌\n Фильтр не был ранее создан")
                     .build();
             return message;
         }

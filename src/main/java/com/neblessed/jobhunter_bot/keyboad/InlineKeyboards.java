@@ -1,6 +1,5 @@
 package com.neblessed.jobhunter_bot.keyboad;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
@@ -81,7 +80,7 @@ public class InlineKeyboards {
 
     public InlineKeyboardMarkup prefferedLocation() {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-        List<List<InlineKeyboardButton>> rowsInLine = new ArrayList<>();
+        List<List<InlineKeyboardButton>> rowsInLine;
         List<InlineKeyboardButton> rowOne;
         List<InlineKeyboardButton> rowTwo;
         List<InlineKeyboardButton> rowThree;
@@ -147,8 +146,10 @@ public class InlineKeyboards {
 
     public InlineKeyboardMarkup prefferedJobType() {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-        List<List<InlineKeyboardButton>> rowsInLine = new ArrayList<>();
+        List<List<InlineKeyboardButton>> rowsInLine;
         List<InlineKeyboardButton> rowOne;
+        List<InlineKeyboardButton> rowTwo;
+        List<InlineKeyboardButton> rowThree;
 
         InlineKeyboardButton jobTypeNoMatter = InlineKeyboardButton.builder()
                 .text("Не важно")
@@ -170,16 +171,22 @@ public class InlineKeyboards {
                 .callbackData("hybrid")
                 .build();
 
-        rowOne = List.of(jobTypeNoMatter, remote, office, hybrid);
-        rowsInLine.add(rowOne);
+        rowOne = List.of(jobTypeNoMatter);
+        rowTwo = List.of(remote, hybrid);
+        rowThree = List.of(office);
+
+
+        rowsInLine = List.of(rowOne, rowTwo, rowThree);
         inlineKeyboardMarkup.setKeyboard(rowsInLine);
         return inlineKeyboardMarkup;
     }
 
     public InlineKeyboardMarkup prefferedSalary() {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-        List<List<InlineKeyboardButton>> rowsInLine = new ArrayList<>();
-        List<InlineKeyboardButton> rowOne;
+        List<List<InlineKeyboardButton>> rowsInLine;
+        List<InlineKeyboardButton> rowOne = new ArrayList<>();
+        List<InlineKeyboardButton> rowTwo = new ArrayList<>();
+        List<InlineKeyboardButton> rowThree = new ArrayList<>();
 
         InlineKeyboardButton k50plus = InlineKeyboardButton.builder()
                 .text("50-80k RUB")
@@ -196,8 +203,11 @@ public class InlineKeyboards {
                 .callbackData("120-150k")
                 .build();
 
-        rowOne = List.of(k50plus, k90plus, k120plus);
-        rowsInLine.add(rowOne);
+        rowOne.add(k50plus);
+        rowTwo.add(k90plus);
+        rowThree.add(k120plus);
+
+        rowsInLine = List.of(rowOne, rowTwo, rowThree);
         inlineKeyboardMarkup.setKeyboard(rowsInLine);
         return inlineKeyboardMarkup;
     }
