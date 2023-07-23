@@ -110,7 +110,7 @@ public class FilterParamsMessages {
             SendMessage message = SendMessage
                     .builder()
                     .chatId(chatId)
-                    .text("Удалять нечего ❌\n Фильтр не был ранее создан")
+                    .text("Удалять нечего ❌\nФильтр не был ранее создан")
                     .build();
             return message;
         }
