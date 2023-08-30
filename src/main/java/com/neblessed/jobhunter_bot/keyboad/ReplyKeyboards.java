@@ -9,7 +9,6 @@ import java.util.List;
 
 @Component
 public class ReplyKeyboards {
-
     public ReplyKeyboardMarkup mainMenu() {
         String enableSearchMode = "Включить приём вакансий ▶";
         String createFilter = "Создать фильтр 📟";
@@ -44,7 +43,6 @@ public class ReplyKeyboards {
         String disableSearchMode = "Пауза ⏸";
 
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
-
         List<KeyboardRow> keyboard = new ArrayList<>();
 
         KeyboardRow rowOne = new KeyboardRow();

@@ -9,7 +9,6 @@ import java.util.List;
 
 @Component
 public class InlineKeyboards {
-
     public InlineKeyboardMarkup jobPosition() {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rowsInLine = new ArrayList<>();
@@ -147,14 +146,10 @@ public class InlineKeyboards {
     public InlineKeyboardMarkup prefferedJobType() {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rowsInLine;
-        List<InlineKeyboardButton> rowOne;
         List<InlineKeyboardButton> rowTwo;
         List<InlineKeyboardButton> rowThree;
+        List<InlineKeyboardButton> rowFour;
 
-        InlineKeyboardButton jobTypeNoMatter = InlineKeyboardButton.builder()
-                .text("Не важно")
-                .callbackData("typeNoMatter")
-                .build();
 
         InlineKeyboardButton remote = InlineKeyboardButton.builder()
                 .text("Удаленно")
@@ -171,12 +166,12 @@ public class InlineKeyboards {
                 .callbackData("hybrid")
                 .build();
 
-        rowOne = List.of(jobTypeNoMatter);
-        rowTwo = List.of(remote, hybrid);
+        rowTwo = List.of(remote);
         rowThree = List.of(office);
+        rowFour = List.of(hybrid);
 
 
-        rowsInLine = List.of(rowOne, rowTwo, rowThree);
+        rowsInLine = List.of(rowTwo, rowThree, rowFour);
         inlineKeyboardMarkup.setKeyboard(rowsInLine);
         return inlineKeyboardMarkup;
     }
@@ -214,7 +209,7 @@ public class InlineKeyboards {
 
     public InlineKeyboardMarkup programmingLanguage() {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-        List<List<InlineKeyboardButton>> rowsInLine = new ArrayList<>();
+        List<List<InlineKeyboardButton>> rowsInLine;
         List<InlineKeyboardButton> rowOne;
         List<InlineKeyboardButton> rowTwo;
         List<InlineKeyboardButton> rowThree;

@@ -12,4 +12,6 @@ public class Jobs {
     private int id;
     @Column(name = "job_title")
     private String jobTitle;
+    @Column(name = "rus_alias")
+    private String rusAlias;
 }

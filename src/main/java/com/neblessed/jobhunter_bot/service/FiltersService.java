@@ -2,11 +2,10 @@ package com.neblessed.jobhunter_bot.service;
 
 import com.neblessed.jobhunter_bot.model.Filters;
 
-import java.util.List;
-
 public interface FiltersService {
+    String getFilterByChatId(int chatId);
 
-    String myFilter(int chatId);
+    void saveFilter(Filters filters, int chatId) throws Exception;
 
-    void saveFilter(Filters filter, int chatId) throws Exception;
+    void deleteFilter(int chatId);
 }

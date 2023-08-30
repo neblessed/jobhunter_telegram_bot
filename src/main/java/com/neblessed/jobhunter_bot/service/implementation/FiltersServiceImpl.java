@@ -1,40 +1,28 @@
 package com.neblessed.jobhunter_bot.service.implementation;
 
-import com.neblessed.jobhunter_bot.helpers.RequestData;
 import com.neblessed.jobhunter_bot.model.Filters;
 import com.neblessed.jobhunter_bot.repository.FiltersRepository;
 import com.neblessed.jobhunter_bot.service.FiltersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
 public class FiltersServiceImpl implements FiltersService {
-    @Autowired
-    RequestData requestData;
     @Autowired
     FiltersRepository filtersRepository;
 
-
     @Override
-    public String myFilter(int chatId) {
-        if (filtersRepository.findAll().stream().anyMatch(x -> x.getTelegram_id() == chatId)) {
-            return "🔻 Позиция: " + requestData.getJobTitle(chatId) + "\n"
-                    + "🔻 Грейд: " + requestData.getGrade(chatId) + "\n"
-                    + "🔻 Предпочитаемая локация: " + requestData.getPrefferedLocation(chatId) + "\n"
-                    + "🔻 Зарплата: " + requestData.getSalary(chatId) + " RUB";
-        } else return "Вы ещё не создали фильтр.\n" + "Нажмите на [Создать фильтр 📟]";
+    public String getFilterByChatId(int chatId) {
+        return null;
     }
 
     @Override
-    public void saveFilter(Filters filter, int chatId) throws Exception {
-        if (filtersRepository.findAll().stream().allMatch(x -> x.getTelegram_id() != chatId)) {
-            filtersRepository.save(filter);
+    public void saveFilter(Filters filters, int chatId) throws Exception {
+        if (filtersRepository.findAll().stream().noneMatch(x -> x.getChatId() == chatId)) {
+            filtersRepository.save(filters);
         } else throw new Exception("Что-то пошло не так при создании фильтра");
     }
 
-    public void deleteFilter(int chatId){
-        int id = requestData.getFilterId(chatId);
+    @Override
+    public void deleteFilter(int chatId) {
 
-        filtersRepository.deleteById(id);
     }
 }
